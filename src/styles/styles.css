@@ -2,7 +2,6 @@
 
 :root {
     --primary-color: #5cb85c;
-    /* --primary-color: #4dc57b; */
     --primary-bg-color: #1E1F24;
     --secondary-bg-color: #292a2e;
     --background-bg-color: #15161A;
@@ -24,4 +23,16 @@ body {
 .app {
     display: flex;
     height: 100vh;
+}
+
+.apexcharts-menu {
+    background-color: var(--secondary-bg-color) !important;
+}
+
+.apexcharts-menu-item {
+    color: var(--text-color) !important;
+}
+
+.apexcharts-menu-item:hover {
+    color: var(--secondary-bg-color) !important;
 }

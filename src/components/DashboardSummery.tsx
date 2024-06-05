@@ -16,7 +16,7 @@ const DashboardSummery: React.FC = () => {
         stroke: {
             show: true,
             width: 2,
-            colors: ['#292a2e']
+            colors: ['#1E1F24']
         },
 
         chart: {

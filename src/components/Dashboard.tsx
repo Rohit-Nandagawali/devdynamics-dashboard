@@ -10,7 +10,7 @@ const Dashboard: React.FC = () => {
     return (
         <div className="dashboard">
             <div className="dashboard-content-first">
-                <BurnoutCard />
+                <BurnoutCard isBurnOut={true} />
                 <ActiveCard title={"Active"} number={10} unit={"10 Days of Consistency"} />
                 <ActiveCard title={"Insights"} number={10} unit={"days"} />
             </div>
@@ -22,6 +22,9 @@ const Dashboard: React.FC = () => {
                     <DashboardSummery />
                 </div>
                 <div className="developer-activity">
+                    <div className="dashboard-summery-header">
+                        <h3>Activity Summery</h3>
+                    </div>
                     <DailyActivity />
                 </div>
             </div>

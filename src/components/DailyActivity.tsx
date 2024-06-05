@@ -3,36 +3,137 @@ import { ApexOptions } from "apexcharts";
 const DailyActivity: React.FC = () => {
 
 
-    const series = [
+    // Define the interface for the series data
+    interface SeriesData {
+        name: string;
+        data: number[];
+    }
+
+    // Sample data
+    const rawData = [
         {
-            name: 'PR Open',
-            data: [31, 40, 28, 51, 42, 109, 100]
+            "date": "2024-05-06",
+            "items": {
+                "children": [
+                    {
+                        "count": "0",
+                        "label": "PR Open",
+                        "fillColor": "#EF6B6B"
+                    },
+                    {
+                        "count": "0",
+                        "label": "PR Merged",
+                        "fillColor": "#61CDBB"
+                    },
+                    {
+                        "count": "7",
+                        "label": "Commits",
+                        "fillColor": "#FAC76E"
+                    },
+                    {
+                        "count": "2",
+                        "label": "PR Reviewed",
+                        "fillColor": "#C2528B"
+                    },
+                    {
+                        "count": "0",
+                        "label": "PR Comments",
+                        "fillColor": "#0396A6"
+                    },
+                    {
+                        "count": "0",
+                        "label": "Incident Alerts",
+                        "fillColor": "#5F50A9"
+                    },
+                    {
+                        "count": "0",
+                        "label": "Incidents Resolved",
+                        "fillColor": "#8F3519"
+                    }
+                ]
+            }
         },
         {
-            name: 'PR Merged',
-            data: [11, 32, 45, 32, 34, 52, 41]
-        },
-        {
-            name: 'Commits',
-            data: [25, 37, 29, 48, 40, 101, 95]
-        },
-        {
-            name: 'PR Reviewed',
-            data: [22, 31, 39, 30, 33, 50, 43]
-        },
-        {
-            name: 'PR Comments',
-            data: [28, 35, 32, 49, 41, 107, 99]
-        },
-        {
-            name: 'Incident Alerts',
-            data: [13, 28, 40, 27, 30, 47, 37]
-        },
-        {
-            name: 'Incidents Resolved',
-            data: [21, 36, 25, 43, 39, 98, 87]
+            "date": "2024-05-07",
+            "items": {
+                "children": [
+                    {
+                        "count": "1",
+                        "label": "PR Open",
+                        "fillColor": "#EF6B6B"
+                    },
+                    {
+                        "count": "0",
+                        "label": "PR Merged",
+                        "fillColor": "#61CDBB"
+                    },
+                    {
+                        "count": "2",
+                        "label": "Commits",
+                        "fillColor": "#FAC76E"
+                    },
+                    {
+                        "count": "4",
+                        "label": "PR Reviewed",
+                        "fillColor": "#C2528B"
+                    },
+                    {
+                        "count": "1",
+                        "label": "PR Comments",
+                        "fillColor": "#0396A6"
+                    },
+                    {
+                        "count": "0",
+                        "label": "Incident Alerts",
+                        "fillColor": "#5F50A9"
+                    },
+                    {
+                        "count": "0",
+                        "label": "Incidents Resolved",
+                        "fillColor": "#8F3519"
+                    }
+                ]
+            }
         }
+    ]
+
+    // Extract labels and colors
+    const labels = [
+        'PR Open',
+        'PR Merged',
+        'Commits',
+        'PR Reviewed',
+        'PR Comments',
+        'Incident Alerts',
+        'Incidents Resolved'
     ];
+
+    const colors = [
+        '#EF6B6B',
+        '#61CDBB',
+        '#FAC76E',
+        '#C2528B',
+        '#0396A6',
+        '#5F50A9',
+        '#8F3519'
+    ];
+
+    // Initialize series data structure with explicit type
+    const seriesData: SeriesData[] = labels.map(label => ({
+        name: label,
+        data: []
+    }));
+
+    // Fill series data
+    rawData.forEach(entry => {
+        entry.items.children.forEach(item => {
+            const seriesIndex = labels.indexOf(item.label);
+            if (seriesIndex !== -1) {
+                seriesData[seriesIndex].data.push(parseInt(item.count, 10));
+            }
+        });
+    });
+
 
 
 
@@ -44,8 +145,9 @@ const DailyActivity: React.FC = () => {
 
 
         chart: {
-            height: 350,
-            type: 'area'
+            height: 300,
+            type: 'area',
+
         },
 
         dataLabels: {
@@ -53,6 +155,52 @@ const DailyActivity: React.FC = () => {
         },
         stroke: {
             curve: 'smooth'
+        },
+        fill: {
+            type: 'gradient',
+            gradient: {
+                shadeIntensity: 1,
+                inverseColors: false,
+                opacityFrom: 0.8,
+                opacityTo: 0,
+                stops: [0, 90, 100]
+            },
+        },
+        tooltip: {
+            theme: 'dark',
+            x: {
+                format: 'dd/MM/yy'
+            }
+        },
+        xaxis: {
+            type: 'category',
+            categories: rawData.map(entry => entry.date),
+            labels: {
+                style: {
+                    colors: '#ffffff',
+                    fontSize: '0.6rem',
+                    fontFamily: 'Manrope, Arial, sans-serif'
+                }
+            }
+        },
+        yaxis: {
+            labels: {
+                style: {
+                    colors: '#ffffff', // Change this to your desired color
+                    fontSize: '12px',
+                    fontFamily: 'Manrope, Arial, sans-serif'
+                }
+            }
+        },
+        legend: {
+            position: 'bottom',
+            fontFamily: 'Manrope, Arial, sans-serif',
+
+            labels: {
+
+                colors: '#ffffff',
+                useSeriesColors: false
+            }
         },
 
 
@@ -74,7 +222,7 @@ const DailyActivity: React.FC = () => {
         <ReactApexChart
             type="area"
             options={options}
-            series={series}
+            series={seriesData}
             height={350}
         />
     );
