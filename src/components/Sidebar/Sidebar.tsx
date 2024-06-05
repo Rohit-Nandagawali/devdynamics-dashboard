@@ -1,10 +1,10 @@
 // components/Sidebar.tsx
 import React from 'react';
 import './Sidebar.css'
-import { UserCard } from './UserCard';
+import { UserCard } from '../UserCard/UserCard';
 
 import { Search } from 'lucide-react';
-import FilterChips from './FilterChips';
+import FilterChips from '../FilterChips/FilterChips';
 
 const Sidebar: React.FC = () => {
     return (

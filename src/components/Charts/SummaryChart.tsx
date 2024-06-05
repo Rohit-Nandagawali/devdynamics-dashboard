@@ -1,6 +1,6 @@
 import ReactApexChart from 'react-apexcharts';
 import { ApexOptions } from "apexcharts";
-const DashboardSummery: React.FC = () => {
+const SummaryChart: React.FC = () => {
 
 
     const series = [
@@ -93,4 +93,4 @@ const DashboardSummery: React.FC = () => {
 };
 
 
-export default DashboardSummery
+export default SummaryChart

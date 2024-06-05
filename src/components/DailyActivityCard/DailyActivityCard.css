@@ -1,0 +1,15 @@
+.developer-activity {
+    background-color: var(--primary-bg-color);
+    border-radius: 1rem;
+    padding: 1.6rem;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    border: 0.5px solid var(--secondary-bg-color);
+}
+
+.dashboard-dailyAct-header h3 {
+    font-size: 1rem;
+    font-weight: 500;
+    margin: 0;
+    color: var(--secondary-text-color);
+
+}

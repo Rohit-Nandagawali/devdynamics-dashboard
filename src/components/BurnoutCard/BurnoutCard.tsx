@@ -1,7 +1,7 @@
 import React from 'react';
 import './BurnoutCard.css'
-import energy from '../assets/energy.svg'
-import tired from '../assets/tired.svg'
+import energy from '../../assets/energy.svg'
+import tired from '../../assets/tired.svg'
 
 
 interface BurnoutCardProps {

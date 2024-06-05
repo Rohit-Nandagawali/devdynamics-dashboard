@@ -1,6 +1,6 @@
 import ReactApexChart from 'react-apexcharts';
 import { ApexOptions } from "apexcharts";
-const DailyActivity: React.FC = () => {
+const DailyActivityChart: React.FC = () => {
 
 
     // Define the interface for the series data
@@ -229,4 +229,4 @@ const DailyActivity: React.FC = () => {
 };
 
 
-export default DailyActivity
+export default DailyActivityChart

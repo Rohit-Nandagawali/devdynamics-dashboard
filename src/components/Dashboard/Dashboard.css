@@ -1,0 +1,22 @@
+.dashboard {
+    flex-grow: 1;
+    padding: 1rem;
+    padding-left: 0;
+}
+
+.dashboard-header {
+    margin-bottom: 2rem;
+}
+
+.dashboard-content-first {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1.6fr;
+    gap: 2rem;
+}
+
+.dashboard-content-second {
+    display: grid;
+    grid-template-columns: 1fr 1.7fr;
+    gap: 1rem;
+    margin-top: 1rem;
+}
