@@ -1,0 +1,44 @@
+.chip {
+    position: relative;
+}
+
+.filter-chips-container {
+
+    white-space: nowrap;
+    padding: 0.5rem;
+    overflow-x: auto;
+
+}
+
+.shadow {
+    position: absolute;
+    top: 0;
+    right: -10px;
+    width: 10px;
+    height: 10px;
+    background: red;
+}
+
+.filter-chips-container::-webkit-scrollbar {
+    display: none;
+}
+
+.filter-chips-scroll {
+    display: inline-flex;
+    align-items: center;
+}
+
+.filter-chip {
+    background-color: var(--secondary-bg-color);
+    color: var(--text-color);
+    font-size: 0.6rem;
+    padding: 0.5rem 1rem;
+    border-radius: 1rem;
+    margin-right: 0.5rem;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.filter-chip:hover {
+    background-color: var(--primary-bg-color);
+}

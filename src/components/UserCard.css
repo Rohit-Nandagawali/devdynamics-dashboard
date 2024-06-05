@@ -1,0 +1,26 @@
+.user-card {
+    display: flex;
+    align-items: center;
+    margin-bottom: .6rem;
+    padding: .4rem .6rem;
+    border-radius: 1rem;
+    cursor: pointer;
+
+}
+
+.user-card.active {
+    background-color: var(--primary-color);
+    color: white;
+}
+
+.user-image {
+    width: 1.8rem;
+    height: 1.8rem;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-right: 1rem;
+}
+
+.user-name {
+    font-weight: 500;
+}

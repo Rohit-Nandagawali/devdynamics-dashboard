@@ -1,0 +1,27 @@
+@import url('https://fonts.googleapis.com/css2?family=Manrope:wght@200..800&family=Poppins:wght@400;500;600;700&display=swap');
+
+:root {
+    --primary-color: #5cb85c;
+    /* --primary-color: #4dc57b; */
+    --primary-bg-color: #1E1F24;
+    --secondary-bg-color: #292a2e;
+    --background-bg-color: #15161A;
+    --grid-color: #18191df3;
+
+    --text-color: #f0f0f0;
+    --secondary-text-color: #808080;
+
+}
+
+body {
+    font-family: 'Manrope', sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: var(--background-bg-color);
+    color: var(--text-color);
+}
+
+.app {
+    display: flex;
+    height: 100vh;
+}
