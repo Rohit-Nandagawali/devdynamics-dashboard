@@ -16,12 +16,10 @@ interface ActiveDays {
   isBurnOut: boolean;
   insight: string[] | undefined | null
 }
-export interface TotalActivityItems {
+
+export interface TotalActivity {
   name: string;
   value: string;
-}
-export interface TotalActivity {
-  totalActivityItems: TotalActivityItems[]
 }
 export interface DayWiseChildren {
   count: string;
@@ -38,7 +36,7 @@ export interface DayWiseActivity {
 
 interface Activity {
   name: string;
-  totalActivity: any[];
+  totalActivity: TotalActivity[];
   dayWiseActivity: DayWiseActivity[];
   activeDays: ActiveDays;
 }

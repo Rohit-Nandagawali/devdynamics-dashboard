@@ -3,10 +3,12 @@ import { ApexOptions } from "apexcharts";
 import { DayWiseActivity } from '../../App';
 
 interface DailyActivityChartProps {
-    dayWiseActivityData: DayWiseActivity[] | undefined
+    dayWiseActivityData: DayWiseActivity[] | undefined;
+    colors: string[] | undefined;
+    labels: string[] | undefined;
 }
 
-const DailyActivityChart: React.FC<DailyActivityChartProps> = ({ dayWiseActivityData }) => {
+const DailyActivityChart: React.FC<DailyActivityChartProps> = ({ dayWiseActivityData, colors, labels }) => {
 
 
     console.log("daywise activity data", dayWiseActivityData);
@@ -21,42 +23,31 @@ const DailyActivityChart: React.FC<DailyActivityChartProps> = ({ dayWiseActivity
     const dailyActivityData = dayWiseActivityData
 
 
-    // Extract labels and colors
-    const labels = [
-        'PR Open',
-        'PR Merged',
-        'Commits',
-        'PR Reviewed',
-        'PR Comments',
-        'Incident Alerts',
-        'Incidents Resolved'
-    ];
-
-
-
     // Initialize series data structure with explicit type
-    const seriesData: SeriesData[] = labels.map(label => ({
+    const seriesData: SeriesData[] = (labels ?? []).map(label => ({
         name: label,
         data: []
     }));
 
+
     // Fill series data
-    dayWiseActivityData?.forEach(entry => {
-        entry.items.children.forEach(item => {
-            const seriesIndex = labels.indexOf(item.label);
-            if (seriesIndex !== -1) {
-                seriesData[seriesIndex].data.push(parseInt(item.count, 10));
-            }
+    if (labels) {
+
+        dayWiseActivityData?.forEach(entry => {
+            entry.items.children.forEach(item => {
+                const seriesIndex = labels.indexOf(item.label);
+                if (seriesIndex !== -1) {
+                    seriesData[seriesIndex].data.push(parseInt(item.count, 10));
+                }
+            });
         });
-    });
+    }
 
 
     const options: ApexOptions = {
-        labels: ["PR Open", "PR Merged", "Commits", "PR Reviewed", "PR Comments", "Incident Alerts", "Incidents Resolved"],
+        labels: labels,
 
-        colors: ["#EF6B6B", "#61CDBB", "#FAC76E", "#C2528B", "#0396A6", "#5F50A9", "#8F3519"],
-
-
+        colors: colors,
 
         chart: {
             height: 300,

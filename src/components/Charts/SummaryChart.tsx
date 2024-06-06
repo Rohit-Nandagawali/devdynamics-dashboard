@@ -3,23 +3,23 @@ import { ApexOptions } from "apexcharts";
 import { TotalActivity } from '../../App';
 
 interface SummaryChartProps {
-    totalActivity: any[] | null
+    totalActivity: TotalActivity[] | null;
+    colors: string[] | undefined;
 }
 
-const SummaryChart: React.FC<SummaryChartProps> = ({ totalActivity }) => {
+const SummaryChart: React.FC<SummaryChartProps> = ({ totalActivity, colors }) => {
 
 
-    const series = [
-        31, 40, 28, 51, 1, 3, 4
-    ];
-
-
-
+    const series = totalActivity?.map((item) => (
+        parseInt(item?.value)
+    ))
 
     const options: ApexOptions = {
-        labels: ["PR Open", "PR Merged", "Commits", "PR Reviewed", "PR Comments", "Incident Alerts", "Incidents Resolved"],
+        labels: totalActivity?.map((item) => (
+            item?.name
+        )),
 
-        colors: ["#EF6B6B", "#61CDBB", "#FAC76E", "#C2528B", "#0396A6", "#5F50A9", "#8F3519"],
+        colors: colors,
 
         stroke: {
             show: true,
