@@ -39,5 +39,6 @@
 .unit {
     font-size: 1rem;
     font-weight: 400;
+    text-align: center;
     color: var(--text-color);
 }

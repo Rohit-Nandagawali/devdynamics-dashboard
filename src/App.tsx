@@ -16,11 +16,30 @@ interface ActiveDays {
   isBurnOut: boolean;
   insight: string[] | undefined | null
 }
+export interface TotalActivityItems {
+  name: string;
+  value: string;
+}
+export interface TotalActivity {
+  totalActivityItems: TotalActivityItems[]
+}
+export interface DayWiseChildren {
+  count: string;
+  label: string;
+  fillColor: string;
+}
+export interface DayWiseActivityItem {
+  children: DayWiseChildren[]
+}
+export interface DayWiseActivity {
+  date: string;
+  items: DayWiseActivityItem
+}
 
 interface Activity {
   name: string;
   totalActivity: any[];
-  dayWiseActivity: any[];
+  dayWiseActivity: DayWiseActivity[];
   activeDays: ActiveDays;
 }
 export interface AuthorWorklog {

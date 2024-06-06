@@ -1,12 +1,20 @@
 import ReactApexChart from 'react-apexcharts';
 import { ApexOptions } from "apexcharts";
-const SummaryChart: React.FC = () => {
+import { TotalActivity } from '../../App';
+
+interface SummaryChartProps {
+    totalActivity: any[] | null
+}
+
+const SummaryChart: React.FC<SummaryChartProps> = ({ totalActivity }) => {
 
 
     const series = [
         31, 40, 28, 51, 1, 3, 4
-
     ];
+
+
+
 
     const options: ApexOptions = {
         labels: ["PR Open", "PR Merged", "Commits", "PR Reviewed", "PR Comments", "Incident Alerts", "Incidents Resolved"],

@@ -1,6 +1,15 @@
 import ReactApexChart from 'react-apexcharts';
 import { ApexOptions } from "apexcharts";
-const DailyActivityChart: React.FC = () => {
+import { DayWiseActivity } from '../../App';
+
+interface DailyActivityChartProps {
+    dayWiseActivityData: DayWiseActivity[] | undefined
+}
+
+const DailyActivityChart: React.FC<DailyActivityChartProps> = ({ dayWiseActivityData }) => {
+
+
+    console.log("daywise activity data", dayWiseActivityData);
 
 
     // Define the interface for the series data
@@ -9,93 +18,8 @@ const DailyActivityChart: React.FC = () => {
         data: number[];
     }
 
-    // Sample data
-    const rawData = [
-        {
-            "date": "2024-05-06",
-            "items": {
-                "children": [
-                    {
-                        "count": "0",
-                        "label": "PR Open",
-                        "fillColor": "#EF6B6B"
-                    },
-                    {
-                        "count": "0",
-                        "label": "PR Merged",
-                        "fillColor": "#61CDBB"
-                    },
-                    {
-                        "count": "7",
-                        "label": "Commits",
-                        "fillColor": "#FAC76E"
-                    },
-                    {
-                        "count": "2",
-                        "label": "PR Reviewed",
-                        "fillColor": "#C2528B"
-                    },
-                    {
-                        "count": "0",
-                        "label": "PR Comments",
-                        "fillColor": "#0396A6"
-                    },
-                    {
-                        "count": "0",
-                        "label": "Incident Alerts",
-                        "fillColor": "#5F50A9"
-                    },
-                    {
-                        "count": "0",
-                        "label": "Incidents Resolved",
-                        "fillColor": "#8F3519"
-                    }
-                ]
-            }
-        },
-        {
-            "date": "2024-05-07",
-            "items": {
-                "children": [
-                    {
-                        "count": "1",
-                        "label": "PR Open",
-                        "fillColor": "#EF6B6B"
-                    },
-                    {
-                        "count": "0",
-                        "label": "PR Merged",
-                        "fillColor": "#61CDBB"
-                    },
-                    {
-                        "count": "2",
-                        "label": "Commits",
-                        "fillColor": "#FAC76E"
-                    },
-                    {
-                        "count": "4",
-                        "label": "PR Reviewed",
-                        "fillColor": "#C2528B"
-                    },
-                    {
-                        "count": "1",
-                        "label": "PR Comments",
-                        "fillColor": "#0396A6"
-                    },
-                    {
-                        "count": "0",
-                        "label": "Incident Alerts",
-                        "fillColor": "#5F50A9"
-                    },
-                    {
-                        "count": "0",
-                        "label": "Incidents Resolved",
-                        "fillColor": "#8F3519"
-                    }
-                ]
-            }
-        }
-    ]
+    const dailyActivityData = dayWiseActivityData
+
 
     // Extract labels and colors
     const labels = [
@@ -108,15 +32,7 @@ const DailyActivityChart: React.FC = () => {
         'Incidents Resolved'
     ];
 
-    const colors = [
-        '#EF6B6B',
-        '#61CDBB',
-        '#FAC76E',
-        '#C2528B',
-        '#0396A6',
-        '#5F50A9',
-        '#8F3519'
-    ];
+
 
     // Initialize series data structure with explicit type
     const seriesData: SeriesData[] = labels.map(label => ({
@@ -125,7 +41,7 @@ const DailyActivityChart: React.FC = () => {
     }));
 
     // Fill series data
-    rawData.forEach(entry => {
+    dayWiseActivityData?.forEach(entry => {
         entry.items.children.forEach(item => {
             const seriesIndex = labels.indexOf(item.label);
             if (seriesIndex !== -1) {
@@ -133,8 +49,6 @@ const DailyActivityChart: React.FC = () => {
             }
         });
     });
-
-
 
 
     const options: ApexOptions = {
@@ -174,7 +88,7 @@ const DailyActivityChart: React.FC = () => {
         },
         xaxis: {
             type: 'category',
-            categories: rawData.map(entry => entry.date),
+            categories: dailyActivityData?.map(entry => entry.date),
             labels: {
                 style: {
                     colors: '#ffffff',

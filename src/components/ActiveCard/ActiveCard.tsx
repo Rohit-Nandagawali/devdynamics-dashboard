@@ -4,10 +4,9 @@ import './ActiveCard.css'
 interface ActiveCardProps {
     title: string;
     number: number;
-    unit: string;
 }
 
-const ActiveCard: React.FC<ActiveCardProps> = ({ title, number, unit }) => {
+const ActiveCard: React.FC<ActiveCardProps> = ({ title, number }) => {
     return (
         <div className="dashboard-card">
             <div className="card-header">
@@ -15,7 +14,7 @@ const ActiveCard: React.FC<ActiveCardProps> = ({ title, number, unit }) => {
             </div>
 
             <span className="number">{number}</span>
-            <span className="unit">{unit}</span>
+            <span className="unit">{number} Days of Consistency</span>
         </div>
     );
 };
