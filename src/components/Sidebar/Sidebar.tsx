@@ -1,12 +1,18 @@
 // components/Sidebar.tsx
 import React from 'react';
 import './Sidebar.css'
-import { UserCard } from '../UserCard/UserCard';
+import UserCard from '../UserCard/UserCard';
+import { NavLink } from 'react-router-dom';
 
 import { Search } from 'lucide-react';
 import FilterChips from '../FilterChips/FilterChips';
 
-const Sidebar: React.FC = () => {
+interface SidebarProps {
+    developerNames: string[],
+
+}
+
+const Sidebar: React.FC<SidebarProps> = ({ developerNames }) => {
     return (
         <div className="sidebar">
             <div className="sidebar-header">
@@ -27,10 +33,15 @@ const Sidebar: React.FC = () => {
 
             <nav className="sidebar-nav">
                 <ul>
-                    <UserCard classnames='active' />
-                    <UserCard />
-                    <UserCard />
-                    <UserCard />
+                    {
+                        developerNames.map((name, key) => (
+                            <NavLink key={key} to={name}>
+                                <UserCard
+                                    developerName={name}
+                                />
+                            </NavLink>
+                        ))
+                    }
 
                 </ul>
             </nav>

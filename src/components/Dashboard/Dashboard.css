@@ -11,7 +11,7 @@
 .dashboard-content-first {
     display: grid;
     grid-template-columns: 1fr 1fr 1.6fr;
-    gap: 2rem;
+    gap: 1rem;
 }
 
 .dashboard-content-second {

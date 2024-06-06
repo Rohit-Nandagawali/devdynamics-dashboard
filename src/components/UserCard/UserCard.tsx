@@ -1,15 +1,21 @@
 import './UserCard.css'
+import Avatar, { genConfig } from 'react-nice-avatar'
 interface UserCardProps {
-    classnames?: string;
+    developerName: string,
+
 }
-export const UserCard: React.FC<UserCardProps> = ({ classnames }) => {
+const UserCard: React.FC<UserCardProps> = ({ developerName }) => {
+
+
+    const config = genConfig()
     return (
-        <li>
-            <div className={`user-card ${classnames ? classnames : ''}`}>
-                <img src={'https://images.unsplash.com/photo-1494790108377-be9c29b29330'} alt="User" className="user-image" />
-                <span className="user-name">John Doe</span>
-            </div>
+        <li className={`user-card`} title={developerName}>
+
+            <Avatar className="user-image"  {...config} />
+
+            <span className="user-name">{developerName}</span>
         </li>
     )
 }
 
+export default UserCard
