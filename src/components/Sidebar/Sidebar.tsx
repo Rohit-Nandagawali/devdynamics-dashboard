@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import './Sidebar.css'
 import UserCard from '../UserCard/UserCard';
 import { NavLink } from 'react-router-dom';
+import logo from '../../assets/devdynamics.svg'
 
 import { Search } from 'lucide-react';
 
@@ -30,7 +31,7 @@ const Sidebar: React.FC<SidebarProps> = ({ developerNames }) => {
     return (
         <div className="sidebar">
             <div className="sidebar-header">
-                Developers
+                <img src={logo} alt="DevDynamics" className='logo' />
             </div>
 
             <div className="search-bar">
