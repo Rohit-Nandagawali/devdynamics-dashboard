@@ -1,11 +1,9 @@
-// components/Sidebar.tsx
-import React from 'react';
+import React, { useState } from 'react';
 import './Sidebar.css'
 import UserCard from '../UserCard/UserCard';
 import { NavLink } from 'react-router-dom';
 
 import { Search } from 'lucide-react';
-import FilterChips from '../FilterChips/FilterChips';
 
 interface SidebarProps {
     developerNames: string[],
@@ -13,37 +11,60 @@ interface SidebarProps {
 }
 
 const Sidebar: React.FC<SidebarProps> = ({ developerNames }) => {
+
+    const [searchInput, setSearchInput] = useState('');
+    const [filteredDeveloperNames, setFilteredDeveloperNames] = useState(developerNames);
+
+
+    // search 
+    const handleSearchInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+        const value = e.target.value.toLowerCase();
+        setSearchInput(value);
+
+        const filteredNames = developerNames.filter(name =>
+            name.toLowerCase().includes(value)
+        );
+        setFilteredDeveloperNames(filteredNames);
+    };
+
     return (
         <div className="sidebar">
             <div className="sidebar-header">
-                <h3>Developers</h3>
+                Developers
             </div>
 
             <div className="search-bar">
                 <Search size={24} className="search-icon" />
                 <input
-                    type="text"
+                    type="search"
                     placeholder="Search..."
                     className="search-input"
+                    value={searchInput}
+                    onChange={handleSearchInputChange}
                 />
             </div>
-            <FilterChips />
 
             <hr className='divider' />
 
             <nav className="sidebar-nav">
-                <ul>
-                    {
-                        developerNames.map((name, key) => (
-                            <NavLink key={key} to={name}>
-                                <UserCard
-                                    developerName={name}
-                                />
-                            </NavLink>
-                        ))
-                    }
+                {
+                    filteredDeveloperNames.length ? (
+                        <ul>
 
-                </ul>
+                            {filteredDeveloperNames.map((name, key) => (
+                                <NavLink key={key} to={name}>
+                                    <UserCard
+                                        developerName={name}
+                                    />
+                                </NavLink>
+                            ))}
+
+
+                        </ul>)
+                        :
+                        <h1>No user found</h1>
+                }
+
             </nav>
         </div>
     );

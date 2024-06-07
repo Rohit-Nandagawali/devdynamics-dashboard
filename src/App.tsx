@@ -1,53 +1,16 @@
 // App.tsx
 import React, { useEffect, useState } from 'react';
-import { BrowserRouter as Router, Routes, Route, } from "react-router-dom";
+import { BrowserRouter as Router, Routes, Route, Navigate, } from "react-router-dom";
 
 import axios from 'axios';
 import Sidebar from './components/Sidebar/Sidebar';
 import Dashboard from './components/Dashboard/Dashboard';
 import './styles/styles.css';
+import { Github, Loader } from 'lucide-react';
+import './App.css'
+import { ApiResponse, AuthorWorklog } from './types/types';
+import { fetchActivityData } from './services/api';
 
-interface ActivityMeta {
-  label: string;
-  fillColor: string;
-}
-interface ActiveDays {
-  days: number;
-  isBurnOut: boolean;
-  insight: string[] | undefined | null
-}
-
-export interface TotalActivity {
-  name: string;
-  value: string;
-}
-export interface DayWiseChildren {
-  count: string;
-  label: string;
-  fillColor: string;
-}
-export interface DayWiseActivityItem {
-  children: DayWiseChildren[]
-}
-export interface DayWiseActivity {
-  date: string;
-  items: DayWiseActivityItem
-}
-
-interface Activity {
-  name: string;
-  totalActivity: TotalActivity[];
-  dayWiseActivity: DayWiseActivity[];
-  activeDays: ActiveDays;
-}
-export interface AuthorWorklog {
-  activityMeta: ActivityMeta[];
-  rows: Activity[];
-}
-
-interface ApiResponse {
-  AuthorWorklog: AuthorWorklog;
-}
 
 
 const App: React.FC = () => {
@@ -57,27 +20,25 @@ const App: React.FC = () => {
 
 
   const [loading, setLoading] = useState<boolean>(true);
-  const [error, setError] = useState<string | null>(null);
+  const [error, setError] = useState<boolean>(false);
 
 
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await axios.get<ApiResponse>('http://localhost:3001/data');
-        const worklogData = response.data
+        // Making api call
+        const worklogData = await fetchActivityData()
+
         // storing all activity data
         setActivityData(worklogData.AuthorWorklog);
-
 
         const FetchedDeveloperNames = worklogData.AuthorWorklog.rows.map((row) => row.name)
 
         // storing names
         setDeveloperNames(FetchedDeveloperNames)
 
-        // console.log(developerNames);
-
       } catch (err) {
-        setError('Error fetching data');
+        setError(true);
       } finally {
         setLoading(false);
       }
@@ -87,18 +48,30 @@ const App: React.FC = () => {
   }, []);
 
 
-
   return (
     <div className="app">
-      {/* 
-      <Sidebar developerNames={developerNames} />
-      <Dashboard /> */}
-      <Router>
-        <Sidebar developerNames={developerNames} />
-        <Routes>
-          <Route path="/:developer" element={<Dashboard authorWorklog={activityData} />} />
-        </Routes>
-      </Router>
+      {!loading && !error && developerNames.length > 0 ? (
+        <Router>
+          <Sidebar developerNames={developerNames} />
+          <Routes>
+            <Route path="/" element={<Navigate to={`/${developerNames[0]}`} />} />
+            <Route path="/:developer" element={<Dashboard authorWorklog={activityData} />} />
+          </Routes>
+        </Router>
+      ) : (
+        loading ? (
+          <div className='loader'><Loader size={100} /></div>
+        ) : (
+          error && <div className='loader'><Loader size={100} /></div>
+        )
+
+      )
+      }
+
+      <a href='#' className="github">
+        <Github />
+      </a>
+
     </div>
   );
 };

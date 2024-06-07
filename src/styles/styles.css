@@ -20,11 +20,6 @@ body {
     color: var(--text-color);
 }
 
-.app {
-    display: flex;
-    height: 100vh;
-}
-
 .apexcharts-menu {
     background-color: var(--secondary-bg-color) !important;
 }

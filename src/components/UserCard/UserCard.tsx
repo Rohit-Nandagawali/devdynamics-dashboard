@@ -7,7 +7,7 @@ interface UserCardProps {
 const UserCard: React.FC<UserCardProps> = ({ developerName }) => {
 
 
-    const config = genConfig()
+    const config = genConfig(developerName + "144")
     return (
         <li className={`user-card`} title={developerName}>
 

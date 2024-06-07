@@ -1,4 +1,4 @@
-import { TotalActivity } from "../../App"
+import { TotalActivity } from "../../types/types";
 import SummaryChart from "../Charts/SummaryChart"
 import './SummaryCard.css'
 

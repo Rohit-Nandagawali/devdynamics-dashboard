@@ -1,6 +1,6 @@
 import ReactApexChart from 'react-apexcharts';
 import { ApexOptions } from "apexcharts";
-import { DayWiseActivity } from '../../App';
+import { DayWiseActivity } from '../../types/types';
 
 interface DailyActivityChartProps {
     dayWiseActivityData: DayWiseActivity[] | undefined;
@@ -113,7 +113,7 @@ const DailyActivityChart: React.FC<DailyActivityChartProps> = ({ dayWiseActivity
             breakpoint: 480,
             options: {
                 chart: {
-                    width: 200
+                    width: 400
                 },
                 legend: {
                     position: 'bottom'

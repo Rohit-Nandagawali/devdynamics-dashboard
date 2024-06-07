@@ -1,4 +1,4 @@
-import { DayWiseActivity } from "../../App"
+import { DayWiseActivity } from "../../types/types";
 import DailyActivityChart from "../Charts/DailyActivityChart"
 import './DailyActivityCard.css'
 

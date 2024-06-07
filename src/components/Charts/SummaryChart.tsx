@@ -1,6 +1,6 @@
 import ReactApexChart from 'react-apexcharts';
 import { ApexOptions } from "apexcharts";
-import { TotalActivity } from '../../App';
+import { TotalActivity } from '../../types/types';
 
 interface SummaryChartProps {
     totalActivity: TotalActivity[] | null;
@@ -80,7 +80,7 @@ const SummaryChart: React.FC<SummaryChartProps> = ({ totalActivity, colors }) =>
             breakpoint: 480,
             options: {
                 chart: {
-                    width: 200
+                    width: 300
                 },
                 legend: {
                     position: 'bottom'

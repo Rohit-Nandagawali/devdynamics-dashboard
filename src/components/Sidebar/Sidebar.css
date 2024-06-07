@@ -10,6 +10,7 @@
 
 .sidebar-header {
     margin-bottom: 2rem;
+
 }
 
 
@@ -54,3 +55,18 @@
     text-decoration: none;
     color: var(--text-color);
 }
+
+
+
+/* Responsive code */
+
+/* small*/
+@media (max-width: 600px) {
+    .sidebar {
+        width: calc(100% - 6rem);
+        margin: 1rem;
+    }
+}
+
+/* medium */
+@media (min-width: 601px) and (max-width: 900px) {}
