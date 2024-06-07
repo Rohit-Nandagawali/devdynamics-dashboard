@@ -70,6 +70,7 @@ const App: React.FC = () => {
 
       <a href='#' className="github">
         <Github />
+        <span className='myname'>Design & Developed by Rohit Nandagawali</span>
       </a>
 
     </div>
