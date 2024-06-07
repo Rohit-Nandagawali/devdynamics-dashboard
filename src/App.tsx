@@ -13,6 +13,7 @@ import { fetchActivityData } from './services/api';
 
 
 
+
 const App: React.FC = () => {
 
   const [activityData, setActivityData] = useState<AuthorWorklog>();

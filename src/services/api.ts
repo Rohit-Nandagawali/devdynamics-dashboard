@@ -4,6 +4,6 @@ import { ApiResponse } from '../types/types';
 const API_URL = 'http://localhost:3001/data';
 
 export const fetchActivityData = async () => {
-    const response = await axios.get<ApiResponse>(API_URL);
+    const response = await axios.get<ApiResponse>('../db.json');
     return response.data;
 };
