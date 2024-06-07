@@ -3,7 +3,7 @@
 
 ## Project Description
 
-This project aims to create a simple dashboard that visualizes organizational developers' activity data throughout the day for a week's time. The activities include committing code, opening pull requests, merging pull requests, attending meetings, and writing documentation.
+This project aims to create a beautiful dashboard that visualizes organizational developers' activity data throughout the day for a week's time. The activities include committing code, opening pull requests, merging pull requests, attending meetings, and writing documentation.
 
 ## Features
 
