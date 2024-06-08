@@ -9,8 +9,7 @@ import './styles/styles.css';
 import { Github, Loader } from 'lucide-react';
 import './App.css'
 import { ApiResponse, AuthorWorklog } from './types/types';
-import { fetchActivityData } from './services/api';
-
+import { fetchActivityData } from './api'
 
 
 
