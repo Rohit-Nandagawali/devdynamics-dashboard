@@ -36,8 +36,10 @@ export interface AuthorWorklog {
     activityMeta: ActivityMeta[];
     rows: Activity[];
 }
+export interface AuthorWorklogData {
+    AuthorWorklog: AuthorWorklog
+}
 
-export
-    interface ApiResponse {
-    AuthorWorklog: AuthorWorklog;
+export interface ApiResponse {
+    data: AuthorWorklogData
 }

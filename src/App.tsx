@@ -2,13 +2,12 @@
 import React, { useEffect, useState } from 'react';
 import { BrowserRouter as Router, Routes, Route, Navigate, } from "react-router-dom";
 
-import axios from 'axios';
 import Sidebar from './components/Sidebar/Sidebar';
 import Dashboard from './components/Dashboard/Dashboard';
 import './styles/styles.css';
 import { Github, Loader } from 'lucide-react';
 import './App.css'
-import { ApiResponse, AuthorWorklog } from './types/types';
+import { AuthorWorklog } from './types/types';
 import { fetchActivityData } from './services/api';
 
 
@@ -29,11 +28,17 @@ const App: React.FC = () => {
         // Making api call
         const worklogData = await fetchActivityData()
 
+
         // storing all activity data
+
         setActivityData(worklogData.AuthorWorklog);
+
+        // console.log();
+
 
         const FetchedDeveloperNames = worklogData.AuthorWorklog.rows.map((row) => row.name)
 
+        // console.log("fetched names", FetchedDeveloperNames);
         // storing names
         setDeveloperNames(FetchedDeveloperNames)
 
