@@ -68,7 +68,7 @@ const App: React.FC = () => {
       )
       }
 
-      <a href='#' className="github">
+      <a target='_blank' href='https://github.com/Rohit-Nandagawali/devdynamics-dashboard' className="github">
         <Github />
         <span className='myname'>Design & Developed by Rohit Nandagawali</span>
       </a>

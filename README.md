@@ -1,7 +1,9 @@
 
 # Developer Activity Dashboard
+[DevDynamics Dashboard Live Demo](https://devdynamics-dashboard-nine.vercel.app/)
 
-## Project Description
+
+## Project Description 
 
 This project aims to create a beautiful dashboard that visualizes organizational developers' activity data throughout the day for a week's time. The activities include committing code, opening pull requests, merging pull requests, attending meetings, and writing documentation.
 
