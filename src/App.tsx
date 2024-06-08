@@ -38,6 +38,7 @@ const App: React.FC = () => {
         setDeveloperNames(FetchedDeveloperNames)
 
       } catch (err) {
+        setLoading(false)
         setError(true);
       } finally {
         setLoading(false);
@@ -62,13 +63,13 @@ const App: React.FC = () => {
         loading ? (
           <div className='loader'><Loader size={100} /></div>
         ) : (
-          error && <div className='loader'><Loader size={100} /></div>
+          error && <div className='error'>Server Error</div>
         )
 
       )
       }
 
-      <a target='_blank' href='https://github.com/Rohit-Nandagawali/devdynamics-dashboard' className="github">
+      <a target='_blank' rel="noreferrer" href='https://github.com/Rohit-Nandagawali/devdynamics-dashboard' className="github">
         <Github />
         <span className='myname'>Design & Developed by Rohit Nandagawali</span>
       </a>

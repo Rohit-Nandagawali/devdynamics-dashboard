@@ -12,6 +12,7 @@
     "@types/react-dom": "^18.3.0",
     "apexcharts": "^3.49.1",
     "axios": "^1.7.2",
+    "concurrently": "^8.2.2",
     "lucide-react": "^0.383.0",
     "react": "^18.3.1",
     "react-apexcharts": "^1.4.1",
@@ -23,8 +24,9 @@
     "web-vitals": "^2.1.4"
   },
   "scripts": {
-    "server": "npx json-server db.json",
-    "start": "react-scripts start",
+    "start": "concurrently \"npm run start-react\" \"npm run start-json-server\"",
+    "start-react": "react-scripts start",
+    "start-json-server": "json-server --watch db.json --port 5000",
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"

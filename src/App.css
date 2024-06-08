@@ -20,6 +20,11 @@
     animation: spin 1s linear infinite;
 }
 
+.error {
+    margin: auto;
+    font-size: 2rem;
+}
+
 .github {
     background-color: var(--secondary-bg-color);
     position: absolute;
