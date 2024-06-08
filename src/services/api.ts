@@ -7,6 +7,6 @@ console.log(API_URL);
 
 
 export const fetchActivityData = async () => {
-    const response = await axios.get<ApiResponse>(`${API_URL}/data`);
+    const response = await axios.get<ApiResponse>(`/db.json`);
     return response.data;
 };
